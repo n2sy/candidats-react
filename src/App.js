@@ -10,6 +10,8 @@ import Update from './components/Update';
 import { useContext } from 'react';
 import { LoginContext } from './store/LoginContext';
 import { useNavigate } from 'react-router-dom';
+import StopWatch from './pages/StopWatch';
+import Food from './pages/Food';
 
 function App() {
   const navigate = useNavigate();
@@ -39,6 +41,7 @@ function App() {
           <Route path='/cv' element={<Cv></Cv>}></Route>
           <Route path='/cv/add' element={<AddCv></AddCv>}></Route>
           <Route path='/cv/:id' element={<Infos></Infos>}></Route>
+          <Route path='/food' element={<Food></Food>}></Route>
           <Route path='/cv/:id/edit' element={<Update></Update>}></Route>
         </Routes>
       </>
@@ -53,6 +56,8 @@ function App() {
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/cv' element={<Cv></Cv>}></Route>
           <Route path='/cv/:id' element={<Infos></Infos>}></Route>
+          <Route path='/watch' element={<StopWatch></StopWatch>}></Route>
+          <Route path='/food' element={<Food></Food>}></Route>
           <Route path='/login' element={<Login selogger={seLogger}></Login>}></Route>
         </Routes>
       </>

@@ -30,6 +30,17 @@ function LoginContextProvider(props) {
         //localStorage.setItem('token', token);
     }
 
+    function register(user) {
+        return fetch('http://localhost:3000/auth/register',
+            {
+                method: 'POST',
+                body: JSON.stringify(user),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+    }
+
     function seDeconnecter() {
         localStorage.removeItem('token');
         setIsLogged(false)
@@ -48,7 +59,8 @@ function LoginContextProvider(props) {
         estConnecte: isLogged,
         seConnecter: seConnecter,
         seDeconnecter: seDeconnecter,
-        verifierConnecte: verifyConnecte
+        verifierConnecte: verifyConnecte,
+        inscrire: register
     }
 
 

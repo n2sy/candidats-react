@@ -20,6 +20,9 @@ export default function Navbar() {
                     <Link className="nav-link" to="/cv/add" >Add</Link>
                 </li>
                 <li className="nav-item">
+                    <Link className="nav-link" to="/food" >Food</Link>
+                </li>
+                <li className="nav-item">
                     <button onClick={() => { LogCtx.seDeconnecter() }} className="nav-link">Logout</button>
                 </li>
             </ul>
@@ -32,6 +35,12 @@ export default function Navbar() {
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/cv" >CV</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/watch" >Watch</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/food" >Food</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/login" >Login</Link>
