@@ -8,7 +8,7 @@ export default function Header(props) {
             <header className={classes.header}>
                 <h1>Food-App</h1>
                 {/* <button>Cart</button> */}
-                <HeaderCartButton></HeaderCartButton>
+                <HeaderCartButton onOpen={props.onOpen}></HeaderCartButton>
             </header>
             <div className={classes.main_image}>
                 <img src={require('../../../assets/meals.jpg')}></img>

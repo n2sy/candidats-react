@@ -2,9 +2,9 @@
 
 import classes from './Cart.module.css'
 import Modal from '../UI/Modal';
-export default function Cart() {
+export default function Cart(props) {
     return (
-        <Modal>
+        <Modal onClose={props.onClose}>
             <ul className={classes['cart-items ']}>
                 <li>
                     Sushis
@@ -17,7 +17,7 @@ export default function Cart() {
 
             </div>
             <div className={classes.actions}>
-                <button className={classes['button--alt']}>Close</button>
+                <button onClick={() => { props.onClose() }} className={classes['button--alt']}>Close</button>
                 <button className={classes['buttons']}>Order</button>
 
             </div>
