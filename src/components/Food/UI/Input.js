@@ -7,7 +7,7 @@ export default function Input(props) {
             <label>
                 {props.label}
             </label>
-            <input {...props.infos}>
+            <input {...props.infos} onChange={(e) => props.onChange(e)}>
             </input>
         </div>
     )

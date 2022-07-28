@@ -18,7 +18,15 @@ export default function CartContextProvider(props) {
 
     function ajouterItem(newC) {
         setChoice((prev) => {
-            return [...prev, newC]
+            let cmd = prev.find((c) => c.id == newC.id);
+            let id = prev.indexOf(cmd);
+            if (id != -1) {
+                prev[id].qte += newC.qte;
+                prev[id].amount += newC.amount;
+                return prev;
+            }
+            else
+                return [...prev, newC];
         })
 
     }
@@ -29,7 +37,11 @@ export default function CartContextProvider(props) {
     }
 
     function total() {
-        const amount = choice.reduce((prevVal, nextVal) => prevVal + nextVal, 0)
+        console.log(choice);
+        const cmd = choice.map((i) => { return (i.amount) });
+        console.log(cmd);
+        const amount = cmd.reduce((prevVal, nextVal) => prevVal + nextVal, 0);
+        console.log(amount);
         return amount
     }
 
@@ -40,7 +52,7 @@ export default function CartContextProvider(props) {
         removeItem: supprimerItem
     }
 
-    return <CartContext.Provider>
+    return <CartContext.Provider value={context}>
         {props.children}
     </CartContext.Provider>
 } 

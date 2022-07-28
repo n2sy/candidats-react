@@ -2,18 +2,21 @@
 
 import classes from './Cart.module.css'
 import Modal from '../UI/Modal';
+import { useContext } from 'react';
+import { CartContext } from '../../../store/cart-context';
 export default function Cart(props) {
+    const cartCtx = useContext(CartContext);
     return (
         <Modal onClose={props.onClose}>
             <ul className={classes['cart-items ']}>
-                <li>
-                    Sushis
-                </li>
+                {cartCtx.item.map((i) => {
+                    return <li key={Math.random().toString()}>{i.label}</li>
+                })}
 
             </ul>
             <div className={classes.total}>
                 <span>Total Amount</span>
-                <span>33.44</span>
+                <span>{cartCtx.totalAmount()}</span>
 
             </div>
             <div className={classes.actions}>
