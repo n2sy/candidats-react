@@ -31,13 +31,17 @@ export default function CartContextProvider(props) {
                 // }
                 // prev.splice(id, 1);
                 // return [...prev, n];
+                console.log('q', q);
                 if (!q) {
                     newC.qte += prev[id].qte;
                     newC.amount += prev[id].amount;
+                    console.log('newC', newC);
                 }
                 else {
+
+                    newC.amount += (prev[id].amount / prev[id].qte);
                     newC.qte += q;
-                    newC.amount += (newC.amount / newC.qte);
+                    console.log('newC', newC);
                 }
 
 
