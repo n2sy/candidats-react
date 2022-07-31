@@ -16,23 +16,52 @@ export const CartContext = createContext(
 export default function CartContextProvider(props) {
     const [choice, setChoice] = useState([]);
 
-    function ajouterItem(newC) {
+    function ajouterItem(newC, q = 0) {
         setChoice((prev) => {
-            let cmd = prev.find((c) => c.id == newC.id);
-            let id = prev.indexOf(cmd);
+            let id = prev.findIndex((c) => c.id == newC.id);
+
             if (id != -1) {
-                prev[id].qte += newC.qte;
-                prev[id].amount += newC.amount;
-                return prev;
+                // const q = prev[id].qte + newC.qte;
+                // const a = prev[id].amount += newC.amount;
+                // const n = {
+                //     id: id,
+                //     label: prev[id].label,
+                //     qte: q,
+                //     amount: a
+                // }
+                // prev.splice(id, 1);
+                // return [...prev, n];
+                if (!q) {
+                    newC.qte += prev[id].qte;
+                    newC.amount += prev[id].amount;
+                }
+                else {
+                    newC.qte += q;
+                    newC.amount += (newC.amount / newC.qte);
+                }
+
+
+                const t = prev.filter((c) => c.id !== newC.id);
+
+                return [...t, newC];
             }
             else
                 return [...prev, newC];
         })
 
     }
-    function supprimerItem(id) {
+    function supprimerItem(i) {
         setChoice((prev) => {
-            prev.filter((i) => i.id != id)
+            let id = prev.findIndex((c) => c.id == i);
+            let prixunique = prev[id].amount / prev[id].qte;
+            console.log("prix unique", prixunique);
+            prev[id].qte--;
+            prev[id].amount -= prixunique;
+            if (!prev[id].qte)
+                prev.filter((i) => i.id != id);
+            else {
+                return [...prev];
+            }
         })
     }
 

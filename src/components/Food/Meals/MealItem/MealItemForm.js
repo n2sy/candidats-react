@@ -18,11 +18,11 @@ export default function MealItemForm(props) {
 
     function addToCart(event) {
         event.preventDefault();
-        let priceGeneral = props.meal.price * inpValue;
+        let priceGeneral = props.meal.price * Number(inpValue);
         const newCommande = {
             id: props.meal.id,
             label: props.meal.name,
-            qte: inpValue,
+            qte: Number(inpValue),
             amount: priceGeneral
         };
         console.log(newCommande);

@@ -8,13 +8,14 @@ export default function HeaderCartButton(props) {
     const cartCtx = useContext(CartContext);
 
     const nbItemsCart = cartCtx.item.reduce((prevVal, nextValue) => {
+        // console.log(cartCtx.item);
         return prevVal + nextValue.amount;
     }, 0)
     return (
         <button onClick={() => props.onOpen()} className={classes.button}>
             <span className={classes.icon}><CartIcon></CartIcon></span>
             <span >Your Cart</span>
-            <span className={classes.badge}>{nbItemsCart.toFixed(2)}</span>
+            <span className={classes.badge}>{nbItemsCart.toFixed(2) + '$'}</span>
 
 
         </button>
