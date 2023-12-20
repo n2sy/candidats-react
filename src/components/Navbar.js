@@ -40,6 +40,9 @@ export default function Navbar() {
                     <Link className="nav-link" to="/watch" >Watch</Link>
                 </li>
                 <li className="nav-item">
+                    <Link className="nav-link" to="/watch2" >Watch 2</Link>
+                </li>
+                <li className="nav-item">
                     <Link className="nav-link" to="/food" >Food</Link>
                 </li>
                 <li className="nav-item">

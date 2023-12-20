@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { createSearchParams, Link, useNavigate, useParams } from "react-router-dom"
 import { CandidatContext } from '../store/CandidatContext';
 import LoadingSpinner from './Spinner';
 
@@ -21,6 +21,21 @@ export default function Infos(props) {
             navigate('/cv');
         }
 
+    }
+
+    function testHandler() {
+        //V1
+        // navigate({
+        //     pathname: '/cv',
+        //     search: '?sort=date&order=newest'
+        // })
+
+        const params = { name: 'nidhal', age: 36 };
+
+        navigate({
+            pathname: '/cv',
+            search: `?${createSearchParams(params)}`
+        })
     }
 
     if (candCtx.selCandidat.avatar)
@@ -69,6 +84,9 @@ export default function Infos(props) {
                                     <div className="d-flex justify-content-center">
                                         <button onClick={deleteHandler} className="btn btn-danger">
                                             Delete
+                                        </button>
+                                        <button onClick={testHandler} className="btn btn-info">
+                                            Test
                                         </button>
                                         <Link to={'/cv/' + candCtx.selCandidat._id + '/edit'}>
                                             <button className="btn btn-primary" >
